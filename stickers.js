@@ -359,13 +359,239 @@ const STICKERS = {
     ${eye(41, 47, 4)}${eye(59, 47, 4)}${smile(50, 56, 5)}${blush(35, 57, .7)}${blush(65, 57, .7)}` },
 };
 
+// ---------- Furniture & everyday things ----------
+const heartPath = (x, y, k = 1) => `M${x} ${y} c${-4 * k} ${-5 * k} ${-10 * k} ${-1 * k} ${-6 * k} ${4 * k} l${6 * k} ${5 * k} l${6 * k} ${-5 * k} c${4 * k} ${-5 * k} ${-2 * k} ${-9 * k} ${-6 * k} ${-4 * k} Z`;
+
+Object.assign(STICKERS, {
+  // Cats
+  'cat-bed': { size: 190, svg: `
+    <ellipse cx="50" cy="70" rx="44" ry="20" fill="#a66cff" ${O}/>
+    <ellipse cx="50" cy="62" rx="44" ry="20" fill="#c77dff" ${O}/>
+    <ellipse cx="50" cy="60" rx="31" ry="11" fill="#ffd6ea" ${O}/>
+    <path d="${heartPath(50, 74, .9)}" fill="#ffd6ea"/>` },
+  'cat-bowl': { size: 120, svg: `
+    ${[[34, 50], [42, 46], [50, 49], [58, 45], [66, 50], [46, 52], [56, 53], [40, 53], [62, 54]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="5" fill="#c98b5a" ${O} stroke-width="1.5"/>`).join('')}
+    <path d="M12 56 H88 L80 82 Q50 92 20 82 Z" fill="#ff9ecf" ${O}/>
+    <ellipse cx="50" cy="56" rx="38" ry="6" fill="#ffb3de" ${O}/>
+    <path d="M36 72 Q46 62 58 72 Q46 82 36 72 Z M58 72 L66 66 L66 78 Z" fill="#fff"/>` },
+  'cat-tree': { size: 240, svg: `
+    <rect x="44" y="26" width="12" height="62" fill="#e9c9a0" ${O}/>
+    <path d="M44 36 l12 4 M44 46 l12 4 M44 56 l12 4 M44 66 l12 4 M44 76 l12 4" stroke="#c9a070" stroke-width="2"/>
+    <rect x="12" y="84" width="76" height="10" rx="4" fill="#c77dff" ${O}/>
+    <rect x="14" y="54" width="42" height="9" rx="4" fill="#ff9ecf" ${O}/>
+    <rect x="44" y="20" width="44" height="9" rx="4" fill="#c77dff" ${O}/>
+    <path d="M80 29 V44" stroke="${INK}" stroke-width="2"/><circle cx="80" cy="48" r="5" fill="#ffd166" ${O} stroke-width="2"/>
+    <path d="M18 84 V70 a10 10 0 0 1 20 0 V84" fill="#ffd6ea" ${O}/><path d="M23 84 V73 a5 5 0 0 1 10 0 V84 Z" fill="#7b46d6"/>` },
+  'mouse-toy': { size: 100, svg: `
+    ${thick('M20 62 Q8 60 10 48 Q12 38 6 34', '#ff9ecf', 2)}
+    <path d="M18 64 Q18 38 50 38 Q78 38 86 62 Q70 70 18 64 Z" fill="#c3c3d6" ${O}/>
+    <circle cx="48" cy="36" r="10" fill="#c3c3d6" ${O}/><circle cx="48" cy="36" r="5" fill="#ffb3cf"/>
+    ${eye(68, 52, 3)}<circle cx="86" cy="61" r="3.5" fill="#ff7fa8" ${O} stroke-width="1.5"/>` },
+
+  // Unicorns
+  'canopy-bed': { size: 290, svg: `
+    <rect x="10" y="14" width="5" height="78" fill="#ffd86b" ${O} stroke-width="2"/><rect x="85" y="14" width="5" height="78" fill="#ffd86b" ${O} stroke-width="2"/>
+    <path d="M14 70 V46 Q50 22 86 46 V70 Z" fill="#c77dff" ${O}/>
+    <path d="${starPath(50, 44, 8, 3.5)}" fill="#ffd86b"/>
+    <rect x="8" y="62" width="84" height="16" rx="6" fill="#fff" ${O}/>
+    <rect x="13" y="54" width="22" height="12" rx="6" fill="#fff6fb" ${O}/>
+    <path d="M36 58 H86 Q92 58 92 64 V80 H36 Z" fill="#ffb3de" ${O}/>
+    <path d="M12 16 Q4 46 18 62 L24 62 Q16 40 26 16 Z" fill="#ffd6f0" ${O} stroke-width="2"/>
+    <path d="M88 16 Q96 46 82 62 L76 62 Q84 40 74 16 Z" fill="#ffd6f0" ${O} stroke-width="2"/>
+    <path d="M6 10 H94 V18 q-5.9 6 -11.7 0 q-5.9 6 -11.7 0 q-5.9 6 -11.7 0 q-5.9 6 -11.7 0 q-5.9 6 -11.7 0 q-5.9 6 -11.7 0 q-5.9 6 -11.7 0 q-5.9 6 -11.8 0 Z" fill="#ff8fc8" ${O}/>
+    <path d="M50 10 V2" stroke="${INK}" stroke-width="2"/><path d="${heartPath(50, 3, .7)}" fill="#ff6fae"/>` },
+  'vanity': { size: 210, svg: `
+    <rect x="16" y="70" width="5" height="22" fill="#c77dff" ${O} stroke-width="2"/><rect x="79" y="70" width="5" height="22" fill="#c77dff" ${O} stroke-width="2"/>
+    <ellipse cx="50" cy="38" rx="24" ry="30" fill="#ffd86b" ${O}/>
+    <ellipse cx="50" cy="38" rx="18" ry="24" fill="#d6f0ff"/>
+    <path d="M40 26 L48 18 M40 34 L54 20" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    <path d="M50 8 V2" stroke="${INK}" stroke-width="2"/><path d="${starPath(50, 4, 5, 2.2)}" fill="#ff6fae"/>
+    <rect x="8" y="64" width="84" height="10" rx="4" fill="#ffb3de" ${O}/>
+    <rect x="68" y="54" width="9" height="10" rx="3" fill="#c9a3ff" ${O} stroke-width="2"/><circle cx="72.5" cy="52" r="3" fill="#ff8fc8" ${O} stroke-width="1.5"/>
+    <rect x="22" y="58" width="5" height="6" rx="1" fill="#ff4d6d" ${O} stroke-width="1.5"/>` },
+  'dresser': { size: 210, svg: `
+    <rect x="18" y="84" width="6" height="8" fill="#8a4fd8" ${O} stroke-width="2"/><rect x="76" y="84" width="6" height="8" fill="#8a4fd8" ${O} stroke-width="2"/>
+    <rect x="12" y="32" width="76" height="54" rx="6" fill="#d6b4ff" ${O}/>
+    ${[38, 54, 70].map(y => `<rect x="18" y="${y}" width="64" height="12" rx="3" fill="#ead9ff" ${O} stroke-width="2"/><path d="${heartPath(50, y + 4.5, .5)}" fill="#ff6fae"/>`).join('')}
+    <path d="M62 32 L60 22 H72 L70 32 Z" fill="#7ee8d6" ${O} stroke-width="2"/>
+    <path d="M66 22 V12" stroke="#4caf50" stroke-width="2"/><circle cx="66" cy="10" r="5" fill="#ff9ecf" ${O} stroke-width="2"/>
+    <rect x="22" y="24" width="20" height="8" rx="2" fill="#74c0fc" ${O} stroke-width="2"/><rect x="24" y="16" width="16" height="8" rx="2" fill="#ffd166" ${O} stroke-width="2"/>` },
+
+  // Mermaids
+  'shell-bed': { size: 280, svg: `
+    <path d="M8 66 Q8 12 50 10 Q92 12 92 66 Z" fill="#ffb3d1" ${O}/>
+    <path d="M50 66 L16 40 M50 66 L26 22 M50 66 L42 13 M50 66 L58 13 M50 66 L74 22 M50 66 L84 40" stroke="#ff7fb5" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M5 64 H95 Q92 92 50 92 Q8 92 5 64 Z" fill="#ff9ecf" ${O}/>
+    <rect x="10" y="56" width="80" height="14" rx="7" fill="#fff" ${O}/>
+    <ellipse cx="26" cy="54" rx="12" ry="7" fill="#e9f7ff" ${O}/>
+    <path d="M38 52 H86 Q90 52 90 58 V70 H38 Z" fill="#4fd1c5" ${O}/>
+    <path d="M44 60 q3 3 6 0 q3 3 6 0 q3 3 6 0 q3 3 6 0 q3 3 6 0 q3 3 6 0" stroke="#fff" stroke-width="1.8" fill="none" opacity=".8"/>` },
+  'coral': { size: 160, svg: `
+    ${thick('M50 88 V50 M50 72 Q34 64 30 40 M50 60 Q66 52 70 30 M31 52 Q20 48 18 36 M67 44 Q80 42 82 32 M50 50 Q48 36 54 24', '#ff7fa8', 8)}
+    <ellipse cx="50" cy="90" rx="30" ry="7" fill="#9d8ac4" ${O}/>` },
+  'treasure': { size: 160, svg: `
+    <rect x="12" y="48" width="76" height="40" rx="4" fill="#c98b5a" ${O}/>
+    <path d="M12 50 V36 Q12 18 50 18 Q88 18 88 36 V50 Z" fill="#d99a6c" ${O}/>
+    <path d="M24 20 V88 M76 20 V88" stroke="#ffd86b" stroke-width="7"/><path d="M12 48 H88" stroke="${INK}" stroke-width="2.5"/>
+    <rect x="42" y="42" width="16" height="16" rx="3" fill="#ffd86b" ${O}/><circle cx="50" cy="49" r="2.5" fill="${INK}"/>
+    <circle cx="20" cy="92" r="5" fill="#ffd86b" ${O} stroke-width="2"/><circle cx="84" cy="90" r="5" fill="#fff" ${O} stroke-width="2"/>
+    <circle cx="92" cy="84" r="4" fill="#ffd86b" ${O} stroke-width="2"/>` },
+  'shell-chair': { size: 190, svg: `
+    <path d="M14 70 Q8 20 50 12 Q92 20 86 70 Z" fill="#c9a3ff" ${O}/>
+    <path d="M50 70 L22 40 M50 70 L32 22 M50 70 L50 14 M50 70 L68 22 M50 70 L78 40" stroke="#a66cff" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="16" y="62" width="68" height="16" rx="8" fill="#4fd1c5" ${O}/>
+    <path d="M24 78 L20 92 H32 L34 78 M76 78 L80 92 H68 L66 78" fill="#ffd86b" ${O}/>
+    <circle cx="50" cy="40" r="6" fill="#fff" ${O} stroke-width="2"/>` },
+
+  // Home
+  'sofa': { size: 270, svg: `
+    <rect x="12" y="80" width="6" height="10" fill="#8a4fd8" ${O} stroke-width="2"/><rect x="82" y="80" width="6" height="10" fill="#8a4fd8" ${O} stroke-width="2"/>
+    <rect x="10" y="28" width="80" height="38" rx="14" fill="#ff8fc8" ${O}/>
+    <rect x="16" y="56" width="34" height="18" rx="7" fill="#ffb3de" ${O}/><rect x="50" y="56" width="34" height="18" rx="7" fill="#ffb3de" ${O}/>
+    <rect x="3" y="44" width="17" height="38" rx="8" fill="#ff9ecf" ${O}/><rect x="80" y="44" width="17" height="38" rx="8" fill="#ff9ecf" ${O}/>
+    <rect x="22" y="40" width="18" height="18" rx="6" fill="#c77dff" ${O} transform="rotate(-10 31 49)"/>
+    <rect x="60" y="40" width="18" height="18" rx="6" fill="#ffd166" ${O} transform="rotate(10 69 49)"/>` },
+  'tv': { size: 200, svg: `
+    <path d="M40 16 L30 4 M60 16 L70 4" stroke="${INK}" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="22" y="78" width="56" height="16" rx="4" fill="#c77dff" ${O}/>
+    <rect x="12" y="16" width="76" height="60" rx="8" fill="#5a4a6e" ${O}/>
+    <rect x="18" y="22" width="64" height="48" rx="4" fill="#bfe9ff"/>
+    ${[['#ff6b8b', 22], ['#ffd84d', 17], ['#6ee7b7', 12], ['#b57cff', 7]].map(([c, r]) => `<path d="M${50 - r} 62 A${r} ${r} 0 0 1 ${50 + r} 62" stroke="${c}" stroke-width="4.5" fill="none"/>`).join('')}
+    <circle cx="38" cy="85" r="2.5" fill="#fff"/><circle cx="62" cy="85" r="2.5" fill="#fff"/>` },
+  'fridge': { size: 240, svg: `
+    <rect x="22" y="6" width="56" height="88" rx="8" fill="#bdf0e3" ${O}/>
+    <path d="M22 38 H78" stroke="${INK}" stroke-width="2.5"/>
+    <rect x="68" y="16" width="4" height="14" rx="2" fill="#fff" ${O} stroke-width="1.5"/><rect x="68" y="46" width="4" height="22" rx="2" fill="#fff" ${O} stroke-width="1.5"/>
+    <path d="${heartPath(36, 18, .9)}" fill="#ff6fae"/><path d="${starPath(52, 24, 5, 2.2)}" fill="#ffd84d"/>
+    <rect x="30" y="50" width="20" height="16" fill="#fff" ${O} stroke-width="1.5" transform="rotate(-6 40 58)"/>
+    <path d="M33 62 L38 54 L42 60 L45 56 L48 62" stroke="#ff6fae" stroke-width="1.8" fill="none"/>
+    <circle cx="56" cy="78" r="3.5" fill="#74c0fc"/>` },
+  'stove': { size: 200, svg: `
+    <rect x="14" y="34" width="72" height="58" rx="6" fill="#fff" ${O}/>
+    <rect x="14" y="34" width="72" height="10" rx="4" fill="#e3c6ff" ${O}/>
+    <circle cx="26" cy="39" r="2.5" fill="${INK}"/><circle cx="36" cy="39" r="2.5" fill="${INK}"/><circle cx="64" cy="39" r="2.5" fill="${INK}"/><circle cx="74" cy="39" r="2.5" fill="${INK}"/>
+    <rect x="24" y="52" width="52" height="30" rx="4" fill="#5a4a6e" ${O}/><rect x="30" y="58" width="40" height="8" rx="3" fill="#ffb703" opacity=".6"/>
+    <path d="M30 34 V22 H62 V34 Z" fill="#ff9ecf" ${O}/><path d="M26 22 H66" stroke="${INK}" stroke-width="3" stroke-linecap="round"/>
+    <path d="M40 16 q-4 -5 0 -10 M52 16 q-4 -5 0 -10" stroke="#c9a3ff" stroke-width="2.5" fill="none" stroke-linecap="round"/>` },
+  'bathtub': { size: 250, svg: `
+    <path d="M78 40 V22 Q78 14 70 14 H62 V20" stroke="${INK}" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path d="M78 40 V22 Q78 14 70 14 H62 V20" stroke="#cfd6e6" stroke-width="3" fill="none" stroke-linecap="round"/>
+    ${[[18, 40, 9], [30, 34, 11], [44, 38, 9], [56, 33, 10], [68, 38, 8]].map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#fff" ${O} stroke-width="2"/>`).join('')}
+    <path d="M24 82 L18 92 M76 82 L82 92" stroke="#ffd86b" stroke-width="6" stroke-linecap="round"/>
+    <path d="M8 46 H92 Q92 82 70 84 H30 Q8 82 8 46 Z" fill="#fff" ${O}/>
+    <rect x="4" y="40" width="92" height="9" rx="4.5" fill="#ff9ecf" ${O}/>
+    <path d="${heartPath(50, 64, 1)}" fill="#ffd6ea"/>
+    <path d="M40 30 q0 -8 8 -8 q8 0 8 6 h6 l-4 4 q2 8 -10 8 q-8 0 -8 -10 Z" fill="#ffd84d" ${O} stroke-width="2"/>
+    <circle cx="50" cy="26" r="1.6" fill="${INK}"/>` },
+  'clock': { size: 110, svg: `
+    <path d="M22 30 L22 8 L40 18 Z M78 30 L78 8 L60 18 Z" fill="#c77dff" ${O}/>
+    <circle cx="50" cy="52" r="38" fill="#c77dff" ${O}/>
+    <circle cx="50" cy="52" r="30" fill="#fff"/>
+    ${[0, 90, 180, 270].map(a => `<circle cx="${(50 + 24 * Math.sin(a * Math.PI / 180)).toFixed(1)}" cy="${(52 - 24 * Math.cos(a * Math.PI / 180)).toFixed(1)}" r="2.5" fill="#ff6fae"/>`).join('')}
+    <path d="M50 52 V34 M50 52 L62 58" stroke="${INK}" stroke-width="3.5" stroke-linecap="round"/><circle cx="50" cy="52" r="3" fill="${INK}"/>` },
+  'toybox': { size: 170, svg: `
+    <circle cx="34" cy="38" r="12" fill="#ff6b8b" ${O}/><path d="M24 34 Q34 40 44 34" stroke="#fff" stroke-width="3" fill="none"/>
+    <rect x="52" y="22" width="18" height="18" rx="3" fill="#ffd166" ${O} transform="rotate(12 61 31)"/>
+    <circle cx="74" cy="34" r="6" fill="#c98b5a" ${O}/><circle cx="62" cy="40" r="6" fill="#c98b5a" ${O}/>
+    <rect x="14" y="42" width="72" height="46" rx="6" fill="#74c0fc" ${O}/>
+    <rect x="10" y="38" width="80" height="10" rx="4" fill="#4dabf7" ${O}/>
+    <path d="${starPath(50, 67, 13, 6)}" fill="#ffd84d" ${O} stroke-width="2"/>` },
+  'desk': { size: 220, svg: `
+    <rect x="14" y="54" width="6" height="38" fill="#8a4fd8" ${O} stroke-width="2"/>
+    <rect x="60" y="54" width="28" height="38" rx="3" fill="#d6b4ff" ${O}/>
+    <rect x="64" y="60" width="20" height="12" rx="2" fill="#ead9ff" ${O} stroke-width="2"/><rect x="64" y="76" width="20" height="12" rx="2" fill="#ead9ff" ${O} stroke-width="2"/>
+    <circle cx="74" cy="66" r="2" fill="#ff6fae"/><circle cx="74" cy="82" r="2" fill="#ff6fae"/>
+    <rect x="8" y="48" width="84" height="8" rx="3" fill="#c77dff" ${O}/>
+    <rect x="22" y="38" width="24" height="10" fill="#fff" ${O} stroke-width="2" transform="rotate(-6 34 43)"/>
+    <rect x="62" y="34" width="12" height="14" rx="2" fill="#ff9ecf" ${O} stroke-width="2"/>
+    <path d="M64 34 L62 22 M68 34 V20 M72 34 L75 23" stroke-width="3" stroke-linecap="round" stroke="#74c0fc"/>
+    <path d="M68 34 V20" stroke="#ffd166" stroke-width="3" stroke-linecap="round"/><path d="M72 34 L75 23" stroke="#6ee7b7" stroke-width="3" stroke-linecap="round"/>` },
+  'toothbrush': { size: 100, svg: `
+    <path d="M36 40 L30 10 M60 40 L68 12" stroke="${INK}" stroke-width="7" stroke-linecap="round"/>
+    <path d="M36 40 L30 10" stroke="#ff9ecf" stroke-width="3.5" stroke-linecap="round"/><path d="M60 40 L68 12" stroke="#74c0fc" stroke-width="3.5" stroke-linecap="round"/>
+    <rect x="25" y="6" width="9" height="8" rx="2" fill="#fff" ${O} stroke-width="1.5" transform="rotate(-11 30 10)"/>
+    <rect x="64" y="8" width="9" height="8" rx="2" fill="#fff" ${O} stroke-width="1.5" transform="rotate(16 68 12)"/>
+    <path d="M28 36 H72 L66 90 H34 Z" fill="#c9a3ff" ${O}/>
+    <path d="${heartPath(50, 60, 1)}" fill="#fff"/>` },
+
+  // Yummy
+  'pancakes': { size: 150, svg: `
+    <ellipse cx="50" cy="82" rx="44" ry="10" fill="#fff" ${O}/>
+    ${[72, 62, 52].map(y => `<ellipse cx="50" cy="${y}" rx="34" ry="10" fill="#f2c48d" ${O}/>`).join('')}
+    <path d="M18 50 Q20 42 50 42 Q80 42 82 50 Q80 60 76 54 Q72 64 68 54 Q60 60 50 56 Q38 60 32 54 Q26 62 18 50 Z" fill="#c26a3a" opacity=".85"/>
+    <rect x="42" y="38" width="16" height="9" rx="2" fill="#ffe58a" ${O} stroke-width="2"/>
+    <path d="M70 44 C64 34 74 28 76 36 C78 28 88 34 82 44 L76 50 Z" fill="#ff5d7a" ${O} stroke-width="2"/>` },
+  'pizza': { size: 130, svg: `
+    <path d="M50 94 L14 22 Q50 6 86 22 Z" fill="#ffd166" ${O}/>
+    <path d="M14 22 Q50 6 86 22 L82 30 Q50 16 18 30 Z" fill="#e9a35e" ${O}/>
+    <circle cx="40" cy="40" r="7" fill="#ff5d7a"/><circle cx="60" cy="46" r="7" fill="#ff5d7a"/><circle cx="48" cy="66" r="6" fill="#ff5d7a"/>
+    <path d="M30 44 l4 4 M64 60 l3 4 M52 34 l3 -3" stroke="#6fd08c" stroke-width="3" stroke-linecap="round"/>` },
+  'juice': { size: 120, svg: `
+    <path d="M58 30 L70 4" stroke="${INK}" stroke-width="7" stroke-linecap="round"/><path d="M58 30 L70 4" stroke="#ff6fae" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M24 26 H76 L70 92 H30 Z" fill="#e9f7ff" ${O}/>
+    <path d="M26 40 H74 L70 88 H30 Z" fill="#ffa94d"/>
+    <path d="M22 26 a14 14 0 0 1 28 0 Z" fill="#ffd166" ${O} stroke-width="2" transform="rotate(-20 36 26)"/>
+    ${eye(43, 60, 3)}${eye(57, 60, 3)}${smile(50, 67, 3)}` },
+  'milk': { size: 120, svg: `
+    <path d="M26 30 L36 10 H64 L74 30 Z" fill="#fff" ${O}/>
+    <rect x="36" y="4" width="28" height="7" rx="1" fill="#fff" ${O} stroke-width="2"/>
+    <rect x="26" y="30" width="48" height="62" rx="3" fill="#fff" ${O}/>
+    <rect x="26" y="44" width="48" height="30" fill="#ff9ecf"/>
+    <path d="M60 52 C54 44 64 40 66 48 C68 40 78 44 72 52 L66 58 Z" fill="#ff5d7a" transform="translate(-16 2)"/>
+    <path d="M26 44 H74 M26 74 H74" stroke="${INK}" stroke-width="2"/>` },
+  'apple': { size: 100, svg: `
+    <path d="M50 30 C34 18 10 26 14 54 C18 82 36 94 50 86 C64 94 82 82 86 54 C90 26 66 18 50 30 Z" fill="#ff5d7a" ${O}/>
+    <path d="M50 30 Q48 18 54 10" stroke="#8a5a3a" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M54 18 Q66 8 76 16 Q66 26 54 18 Z" fill="#6fd08c" ${O} stroke-width="2"/>
+    <path d="M26 44 Q28 36 36 34" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+    ${eye(42, 56, 3.5)}${eye(58, 56, 3.5)}${smile(50, 63, 3.5)}` },
+  'cereal': { size: 140, svg: `
+    <path d="M70 36 L92 14" stroke="${INK}" stroke-width="7" stroke-linecap="round"/><path d="M70 36 L92 14" stroke="#d6dbe8" stroke-width="3.5" stroke-linecap="round"/>
+    <ellipse cx="50" cy="48" rx="40" ry="10" fill="#fff" ${O}/>
+    ${[[30, 46, '#ff6b8b'], [42, 44, '#ffd84d'], [54, 47, '#6ee7b7'], [66, 45, '#b57cff'], [38, 50, '#74c0fc'], [60, 51, '#ffa94d']].map(([x, y, c]) => `<circle cx="${x}" cy="${y}" r="4.5" fill="none" stroke="${c}" stroke-width="3"/>`).join('')}
+    <path d="M10 48 Q12 88 50 88 Q88 88 90 48 Q88 58 50 58 Q12 58 10 48 Z" fill="#c9a3ff" ${O}/>
+    <path d="${heartPath(50, 70, .9)}" fill="#fff"/>` },
+
+  // Sparkle
+  'bunting': { size: 280, svg: (() => {
+    const pt = t => [4 + 92 * t, 20 + 40 * t - 40 * t * t];
+    const colors = ['#ff6b8b', '#ffa94d', '#ffd84d', '#6ee7b7', '#74c0fc', '#b57cff'];
+    return `<path d="M4 20 Q50 40 96 20" stroke="${INK}" stroke-width="2.5" fill="none"/>` + colors.map((c, i) => {
+      const t = .1 + i * .16, [x, y] = pt(t);
+      return `<path d="M${(x - 6.5).toFixed(1)} ${(y - .5).toFixed(1)} L${(x + 6.5).toFixed(1)} ${(y + .5).toFixed(1)} L${x.toFixed(1)} ${(y + 18).toFixed(1)} Z" fill="${c}" ${O} stroke-width="2"/>`;
+    }).join('');
+  })() },
+  'fairy-lights': { size: 280, svg: (() => {
+    const y = x => 30 + 10 * Math.sin((x - 4) / 92 * Math.PI * 3);
+    let d = 'M4 ' + y(4).toFixed(1);
+    for (let x = 6; x <= 96; x += 2) d += ' L' + x + ' ' + y(x).toFixed(1);
+    const colors = ['#ff6fae', '#ffd84d', '#74c0fc', '#b57cff', '#6ee7b7', '#ffa94d', '#ff6fae', '#ffd84d'];
+    return `<path d="${d}" stroke="${INK}" stroke-width="2" fill="none"/>` + colors.map((c, i) => {
+      const x = 10 + i * 11.4, yy = y(x) + 6;
+      return `<circle cx="${x.toFixed(1)}" cy="${yy.toFixed(1)}" r="7" fill="${c}" opacity=".35"/><ellipse cx="${x.toFixed(1)}" cy="${yy.toFixed(1)}" rx="3.2" ry="4.5" fill="${c}" ${O} stroke-width="1.5"/>`;
+    }).join('');
+  })() },
+  'mobile': { size: 190, svg: `
+    <path d="M50 2 V14 M14 14 H86 M20 14 V44 M50 14 V60 M80 14 V40" stroke="${INK}" stroke-width="2"/>
+    <path d="M14 14 H86" stroke="#c77dff" stroke-width="5" stroke-linecap="round"/>
+    <path d="${starPath(20, 52, 11, 5)}" fill="#ffd84d" ${O} stroke-width="2"/>
+    <path d="M42 66 a6 6 0 0 1 6 -6 a7 7 0 0 1 12 3 a5 5 0 0 1 0 10 H44 a4 4 0 0 1 -2 -7 Z" fill="#fff" ${O} stroke-width="2" transform="translate(-6 0)"/>
+    <path d="${heartPath(80, 44, 1.2)}" fill="#ff6fae" ${O} stroke-width="2"/>` },
+  'gift': { size: 120, svg: `
+    <path d="M50 30 C36 14 22 22 32 30 Z M50 30 C64 14 78 22 68 30 Z" fill="#ff6fae" ${O}/>
+    <rect x="16" y="42" width="68" height="48" rx="4" fill="#c77dff" ${O}/>
+    <rect x="12" y="30" width="76" height="14" rx="4" fill="#d6b4ff" ${O}/>
+    <rect x="44" y="30" width="12" height="60" fill="#ff6fae" ${O}/>
+    <circle cx="28" cy="62" r="3" fill="#fff"/><circle cx="72" cy="56" r="3" fill="#fff"/><circle cx="70" cy="76" r="3" fill="#fff"/><circle cx="30" cy="80" r="3" fill="#fff"/>` },
+});
+
 const CATEGORIES = [
-  { id: 'cats', name: 'Cats', icon: 'cat-orange', items: ['cat-orange', 'cat-gray', 'cat-black', 'cat-white', 'caticorn', 'cat-sleep', 'cat-sleep2', 'yarn', 'paw', 'fish-blue'] },
-  { id: 'unicorns', name: 'Unicorns', icon: 'uni-pink', items: ['uni-pink', 'uni-rainbow', 'uni-mint', 'castle', 'wand', 'tiara', 'horseshoe-heart'] },
-  { id: 'sea', name: 'Mermaids', icon: 'mermaid-1', items: ['mermaid-1', 'mermaid-2', 'shell', 'starfish', 'fish-pink', 'fish-yellow', 'octopus', 'bubbles', 'clam'] },
-  { id: 'home', name: 'Home', icon: 'bed', items: ['bed', 'armchair', 'lamp', 'plant', 'window', 'shelf', 'table', 'rug', 'frame'] },
-  { id: 'yummy', name: 'Yummy', icon: 'cupcake', items: ['cupcake', 'donut', 'icecream', 'cookie', 'strawberry', 'teacup', 'cake', 'lollipop'] },
-  { id: 'sparkle', name: 'Sparkle', icon: 'rainbow', items: ['rainbow', 'star', 'heart', 'heart-purple', 'cloud', 'moon', 'sparkle', 'balloon', 'flower', 'butterfly', 'sun'] },
+  { id: 'cats', name: 'Cats', icon: 'cat-orange', items: ['cat-orange', 'cat-gray', 'cat-black', 'cat-white', 'caticorn', 'cat-sleep', 'cat-sleep2', 'cat-bed', 'cat-tree', 'cat-bowl', 'mouse-toy', 'yarn', 'paw', 'fish-blue'] },
+  { id: 'unicorns', name: 'Unicorns', icon: 'uni-pink', items: ['uni-pink', 'uni-rainbow', 'uni-mint', 'canopy-bed', 'vanity', 'dresser', 'castle', 'wand', 'tiara', 'horseshoe-heart'] },
+  { id: 'sea', name: 'Mermaids', icon: 'mermaid-1', items: ['mermaid-1', 'mermaid-2', 'shell-bed', 'shell-chair', 'treasure', 'coral', 'shell', 'starfish', 'fish-pink', 'fish-yellow', 'octopus', 'bubbles', 'clam'] },
+  { id: 'home', name: 'Home', icon: 'bed', items: ['bed', 'sofa', 'armchair', 'tv', 'table', 'desk', 'fridge', 'stove', 'bathtub', 'lamp', 'plant', 'window', 'shelf', 'rug', 'frame', 'clock', 'toybox', 'toothbrush'] },
+  { id: 'yummy', name: 'Yummy', icon: 'cupcake', items: ['pancakes', 'pizza', 'cereal', 'apple', 'juice', 'milk', 'cupcake', 'donut', 'icecream', 'cookie', 'strawberry', 'teacup', 'cake', 'lollipop'] },
+  { id: 'sparkle', name: 'Sparkle', icon: 'rainbow', items: ['rainbow', 'star', 'heart', 'heart-purple', 'cloud', 'moon', 'sparkle', 'balloon', 'flower', 'butterfly', 'sun', 'bunting', 'fairy-lights', 'mobile', 'gift'] },
 ];
 
 // ---------- Rooms (1000 x 625 scenes) ----------
