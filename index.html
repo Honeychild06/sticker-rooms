@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Sparkle Sticker Rooms</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#c77dff">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- White sticker edge + soft shadow, shared by every sticker -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="stk" x="-25%" y="-25%" width="150%" height="150%">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="3.2" result="fat"/>
+    <feFlood flood-color="#fff"/><feComposite in2="fat" operator="in" result="edge"/>
+    <feGaussianBlur in="fat" stdDeviation="2" result="blur"/><feOffset in="blur" dy="2.5" result="drop"/>
+    <feFlood flood-color="#5a3a6e" flood-opacity=".28"/><feComposite in2="drop" operator="in" result="shadow"/>
+    <feMerge><feMergeNode in="shadow"/><feMergeNode in="edge"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</svg>
+
+<div id="home" class="screen">
+  <h1 id="title">Sparkle Sticker Rooms</h1>
+  <p class="sub">Pick a room!</p>
+  <div id="rooms"></div>
+</div>
+
+<div id="play" class="screen hidden">
+  <div id="bar">
+    <button id="btnHome" class="pill">🏠 Home</button>
+    <div id="roomName"></div>
+    <button id="btnSound" class="pill round" aria-label="Sound">🔊</button>
+    <button id="btnClear" class="pill">🧹 Clear</button>
+    <button id="btnTada" class="pill tada">⭐ Ta-da!</button>
+  </div>
+  <div id="wrap">
+    <div id="stage">
+      <div id="bg"></div>
+      <div id="layer"></div>
+      <div id="selbox">
+        <button class="h h-del" aria-label="Remove">✕</button>
+        <button class="h h-flip" aria-label="Flip">⇄</button>
+        <div class="h h-rot" aria-label="Turn and size">⟳</div>
+      </div>
+      <div id="fx"></div>
+    </div>
+    <div id="hint">Tap a sticker! 👇</div>
+    <div id="cheer"></div>
+  </div>
+  <div id="tray">
+    <div id="tabs"></div>
+    <div id="sheet"></div>
+  </div>
+</div>
+
+<div id="modal" class="hidden">
+  <div class="box">
+    <p>Clear the room?</p>
+    <div class="row"><button id="yes" class="pill big pink">Yes</button><button id="no" class="pill big">No</button></div>
+  </div>
+</div>
+
+<script src="stickers.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
