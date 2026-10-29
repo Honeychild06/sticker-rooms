@@ -22,6 +22,8 @@
   const svgOf = k => `<svg viewBox="0 0 100 100"><g filter="url(#stk)">${STICKERS[k].svg}</g></svg>`;
   const stkStyle = i => `left:${i.x}px;top:${i.y}px;width:${i.s}px;height:${i.s}px;` +
     `transform:translate(-50%,-50%) rotate(${i.r}deg) scaleX(${i.f ? -1 : 1})`;
+  // New stickers come in a bit smaller than their drawn size, so rooms fit more.
+  const startSize = k => Math.round((STICKERS[k].size || 150) * .7);
   const roomItems = id => (data.rooms[id] || []).filter(i => STICKERS[i.k]);
 
   // ---------- Sounds (made on the fly, no files) ----------
@@ -147,7 +149,7 @@
   }
 
   function addSticker(k, x, y) {
-    const i = { id: nextId++, k, x: clamp(x, 0, W), y: clamp(y, 0, H), s: STICKERS[k].size || 150, r: Math.round(Math.random() * 16 - 8), f: false };
+    const i = { id: nextId++, k, x: clamp(x, 0, W), y: clamp(y, 0, H), s: startSize(k), r: Math.round(Math.random() * 16 - 8), f: false };
     items.push(i);
     const el = makeEl(i);
     el.classList.add('pop');
@@ -260,12 +262,12 @@
       sel.y = clamp(p.y + g.dy, 0, H);
     } else if (mode === 'rot') {
       const a = Math.atan2(p.y - sel.y, p.x - sel.x), d = Math.hypot(p.x - sel.x, p.y - sel.y);
-      sel.s = clamp(g.s0 * d / g.d0, 50, 620);
+      sel.s = clamp(g.s0 * d / g.d0, 30, 620);
       sel.r = g.r0 + (a - g.a0) * 180 / Math.PI;
     } else if (mode === 'pinch' && pts.size >= 2) {
       const { a, b } = twoPts();
       const d = Math.hypot(b.x - a.x, b.y - a.y), ang = Math.atan2(b.y - a.y, b.x - a.x);
-      sel.s = clamp(g.s0 * d / g.d0, 50, 620);
+      sel.s = clamp(g.s0 * d / g.d0, 30, 620);
       sel.r = g.r0 + (ang - g.a0) * 180 / Math.PI;
       sel.x = clamp(g.x0 + (a.x + b.x) / 2 - g.m0.x, 0, W);
       sel.y = clamp(g.y0 + (a.y + b.y) / 2 - g.m0.y, 0, H);
@@ -322,7 +324,7 @@
     if (!td.drag) {
       if (dy < -14 && Math.abs(dy) > Math.abs(dx)) {
         td.drag = true;
-        const size = (STICKERS[td.k].size || 150) * scale;
+        const size = startSize(td.k) * scale;
         td.ghost = document.createElement('div');
         td.ghost.className = 'ghost';
         td.ghost.style.width = td.ghost.style.height = size + 'px';

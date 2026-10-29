@@ -199,29 +199,29 @@ button { font-family: inherit; color: inherit; cursor: pointer; }
 }
 #tabs, #sheet { display: flex; overflow-x: auto; scrollbar-width: none; }
 #tabs::-webkit-scrollbar, #sheet::-webkit-scrollbar { display: none; }
-#tabs { gap: 8px; padding: 10px 12px 0; }
+#tabs { gap: 8px; padding: 8px 12px 0; }
 .tab {
   flex: 0 0 auto;
   display: flex; align-items: center; gap: 6px;
   border: none;
   border-radius: 999px;
-  padding: 4px 16px 4px 6px;
-  font-size: 21px; font-weight: 600;
+  padding: 2px 14px 2px 4px;
+  font-size: 19px; font-weight: 600;
   background: var(--soft);
 }
-.tab svg { width: 38px; height: 38px; overflow: visible; }
+.tab svg { width: 32px; height: 32px; overflow: visible; }
 .tab.on { background: var(--purple); color: #fff; }
-#sheet { gap: 10px; padding: 10px 12px 14px; touch-action: pan-x; }
+#sheet { gap: 8px; padding: 8px 12px 10px; touch-action: pan-x; }
 .item {
   flex: 0 0 auto;
-  width: 100px; height: 100px;
-  border-radius: 22px;
+  width: 76px; height: 76px;
+  border-radius: 18px;
   background: #fff6fb;
   border: 3px solid #f3dcff;
   display: grid; place-items: center;
   transition: transform .1s;
 }
-.item svg { width: 80px; height: 80px; overflow: visible; pointer-events: none; }
+.item svg { width: 60px; height: 60px; overflow: visible; pointer-events: none; }
 .item.press { transform: scale(.92); background: #ffe3f3; }
 .ghost { position: fixed; left: 0; top: 0; pointer-events: none; z-index: 50; }
 .ghost svg { width: 100%; height: 100%; overflow: visible; transform: rotate(-6deg) scale(1.08); }
@@ -237,11 +237,12 @@ button { font-family: inherit; color: inherit; cursor: pointer; }
   #bar { padding: 5px 10px; gap: 8px; }
   .pill { font-size: 18px; padding: 6px 14px; }
   #roomName { font-size: 20px; }
-  .tab { font-size: 17px; }
-  .tab svg { width: 30px; height: 30px; }
-  .item { width: 78px; height: 78px; border-radius: 18px; }
-  .item svg { width: 62px; height: 62px; }
-  #sheet { padding: 8px 10px 10px; }
+  #tabs { padding: 6px 10px 0; }
+  .tab { font-size: 16px; }
+  .tab svg { width: 26px; height: 26px; }
+  .item { width: 62px; height: 62px; border-radius: 15px; }
+  .item svg { width: 48px; height: 48px; }
+  #sheet { gap: 6px; padding: 6px 10px 8px; }
   #hint { font-size: 22px; }
 }
 @media (max-width: 700px) {
