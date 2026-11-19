@@ -57,6 +57,25 @@
   </div>
 </div>
 
+<div id="studio" class="screen hidden">
+  <div id="dsBar">
+    <button id="dsHome" class="pill">🏠 Home</button>
+    <div id="dsTitle">Doll Studio</div>
+    <button id="dsRandom" class="pill">🎲 Surprise!</button>
+    <button id="dsDone" class="pill tada">✨ Done!</button>
+  </div>
+  <div id="dsMain">
+    <div id="dsStage"><div id="dsShadow"></div><canvas id="dsDoll"></canvas><div id="dsFx"></div></div>
+    <div id="dsTray"><div id="dsTabs"></div><div id="dsColors"></div><div id="dsSheet"></div></div>
+  </div>
+  <div id="dsModal" class="modal hidden">
+    <div class="box">
+      <p>Remove this doll?</p>
+      <div class="row"><button id="dsYes" class="pill big pink">Yes</button><button id="dsNo" class="pill big">No</button></div>
+    </div>
+  </div>
+</div>
+
 <div id="modal" class="hidden">
   <div class="box">
     <p>Clear the room?</p>
@@ -65,6 +84,7 @@
 </div>
 
 <script src="stickers.js"></script>
+<script src="dolls.js"></script>
 <script src="game.js"></script>
 </body>
 </html>

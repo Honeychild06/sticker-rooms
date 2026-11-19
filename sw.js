@@ -1,8 +1,8 @@
 // Keeps the game working offline. Serves from the cache right away,
 // then quietly fetches a fresh copy so updates show up on the next launch.
-const CACHE = 'sparkle-stickers-v3';
+const CACHE = 'sparkle-stickers-v4';
 const FILES = [
-  './', 'index.html', 'style.css', 'stickers.js', 'game.js', 'manifest.webmanifest',
+  './', 'index.html', 'style.css', 'stickers.js', 'dolls.js', 'game.js', 'manifest.webmanifest',
   'icon-192.png', 'icon-512.png', 'fonts/fredoka.woff2',
 ];
 

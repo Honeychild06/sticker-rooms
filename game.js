@@ -73,10 +73,16 @@
       card.onclick = () => { sfx.tap(); openRoom(r.id); };
       box.appendChild(card);
     });
+    const sc = document.createElement('button');
+    sc.className = 'room-card studio-card';
+    sc.innerHTML = `<div class="prev"></div><div class="label">Doll Studio</div>`;
+    sc.firstChild.appendChild(DollStudio.preview(150));
+    sc.onclick = () => { sfx.tap(); home.classList.add('hidden'); DollStudio.open({ tone, onHome: showHome }); };
+    box.appendChild(sc);
     fitPreviews();
   }
   function fitPreviews() {
-    document.querySelectorAll('.prev').forEach(p => {
+    document.querySelectorAll('.room-card:not(.studio-card) .prev').forEach(p => {
       p.firstChild.style.transform = `scale(${p.clientWidth / W})`;
     });
   }

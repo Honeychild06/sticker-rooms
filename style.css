@@ -227,10 +227,73 @@ button { font-family: inherit; color: inherit; cursor: pointer; }
 .ghost svg { width: 100%; height: 100%; overflow: visible; transform: rotate(-6deg) scale(1.08); }
 
 /* ---------- Modal ---------- */
-#modal { position: fixed; inset: 0; background: #5a3a6e66; display: grid; place-items: center; z-index: 60; }
-#modal .box { background: #fff; border-radius: 30px; padding: 26px 36px; text-align: center; box-shadow: 0 10px 40px #0003; }
-#modal p { font-size: 36px; font-weight: 600; margin: 0 0 22px; }
-#modal .row { display: flex; gap: 20px; justify-content: center; }
+#modal, .modal { position: fixed; inset: 0; background: #5a3a6e66; display: grid; place-items: center; z-index: 60; }
+#modal .box, .modal .box { background: #fff; border-radius: 30px; padding: 26px 36px; text-align: center; box-shadow: 0 10px 40px #0003; }
+#modal p, .modal p { font-size: 36px; font-weight: 600; margin: 0 0 22px; }
+#modal .row, .modal .row { display: flex; gap: 20px; justify-content: center; }
+
+/* ---------- Doll Studio ---------- */
+.studio-card .prev {
+  display: grid; place-items: center;
+  background:
+    radial-gradient(circle at 12% 20%, #fff 0 3px, transparent 4px) 0 0 / 70px 70px,
+    linear-gradient(180deg, #ffd6ec 0, #e7d4ff 78%, #cdb3f0 78%);
+}
+.studio-card .prev canvas { image-rendering: pixelated; }
+#studio { background: #fff; }
+#dsBar { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: #ffffffb0; }
+#dsTitle { flex: 1; text-align: center; font-size: 26px; font-weight: 600; white-space: nowrap; }
+#dsMain { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+#dsStage {
+  flex: 1; min-height: 0; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  background:
+    radial-gradient(circle at 12% 20%, #fff 0 3px, transparent 4px) 0 0 / 110px 110px,
+    radial-gradient(circle at 70% 60%, #fff9 0 2px, transparent 3px) 0 0 / 80px 80px,
+    linear-gradient(180deg, #ffd6ec 0, #e7d4ff 78%, #d7c2f5 78%, #cdb3f0 100%);
+}
+#dsDoll { position: relative; z-index: 1; image-rendering: pixelated; image-rendering: crisp-edges; }
+#dsShadow { position: absolute; left: 50%; transform: translateX(-50%); border-radius: 50%; background: #7a4fa055; }
+#dsFx { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 3; }
+#dsSaved {
+  position: absolute; right: 16px; top: 16px; z-index: 4; background: #fff; border-radius: 22px; padding: 10px 16px;
+  box-shadow: 0 6px 0 #e2c4f2, 0 10px 24px #a66cff33; text-align: center; font-size: 22px; font-weight: 600; transition: opacity .4s;
+}
+#dsSaved canvas { display: block; margin: 0 auto 4px; image-rendering: pixelated; }
+#dsTray { background: #fff; border-radius: 26px 26px 0 0; box-shadow: 0 -6px 20px #a66cff22; padding: 0 0 env(safe-area-inset-bottom); }
+#dsTabs, #dsSheet, #dsColors { display: flex; overflow-x: auto; scrollbar-width: none; }
+#dsTabs::-webkit-scrollbar, #dsSheet::-webkit-scrollbar, #dsColors::-webkit-scrollbar { display: none; }
+#dsTabs { gap: 8px; padding: 8px 12px 0; }
+#dsTabs .tab { padding: 4px 14px 4px 8px; }
+.ds-ico { font-size: 22px; }
+#dsColors { gap: 10px; padding: 8px 12px 0; }
+.ds-dot { flex: none; width: 40px; height: 40px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 0 2px #e2c4f2; padding: 0; }
+.ds-dot.on { box-shadow: 0 0 0 4px var(--ink); }
+.ds-dot.leo { background: radial-gradient(circle at 30% 30%, #3b2416 0 2px, #c98a3a 2px 4px, transparent 4.5px) 0 0 / 13px 13px, #f2bd5c; }
+#dsSheet { gap: 8px; padding: 8px 12px 10px; }
+.ds-item {
+  flex: 0 0 auto; position: relative;
+  width: 84px; height: 84px; padding: 0;
+  border-radius: 18px; background: #fff6fb; border: 3px solid #f3dcff;
+  display: grid; place-items: center;
+}
+.ds-item:active { transform: scale(.94); }
+.ds-item canvas { image-rendering: pixelated; pointer-events: none; }
+.ds-item.on { background: #ffe3f3; border-color: var(--pink); }
+.ds-new { font-size: 30px; line-height: 1; gap: 2px; }
+.ds-new small { font-size: 16px; font-weight: 600; }
+.ds-swatch { width: 58px; height: 58px; border-radius: 50%; border: 4px solid #fff; box-shadow: 0 0 0 2px #e2c4f2; }
+.ds-x {
+  position: absolute; top: -8px; right: -8px; width: 28px; height: 28px; border-radius: 50%;
+  background: #ff5d8f; color: #fff; font-size: 15px; font-weight: 700; display: grid; place-items: center;
+  border: 3px solid #fff; box-shadow: 0 2px 4px #0003;
+}
+/* Sideways tablets: tray on the right so the doll can stand tall */
+@media (orientation: landscape) and (min-width: 760px) {
+  #dsMain { flex-direction: row; }
+  #dsTray { width: min(44%, 470px); border-radius: 26px 0 0 0; box-shadow: -6px 0 20px #a66cff22; overflow-y: auto; }
+  #dsTabs, #dsSheet, #dsColors { flex-wrap: wrap; overflow: visible; }
+}
 
 /* Small screens (Fire 7, phones) */
 @media (max-height: 640px) {
@@ -244,7 +307,11 @@ button { font-family: inherit; color: inherit; cursor: pointer; }
   .item svg { width: 48px; height: 48px; }
   #sheet { gap: 6px; padding: 6px 10px 8px; }
   #hint { font-size: 22px; }
+  #dsBar { padding: 5px 10px; gap: 8px; }
+  #dsTitle { font-size: 20px; }
+  .ds-item { width: 68px; height: 68px; border-radius: 15px; }
+  .ds-dot { width: 34px; height: 34px; }
 }
 @media (max-width: 700px) {
-  #roomName { display: none; }
+  #roomName, #dsTitle { display: none; }
 }
